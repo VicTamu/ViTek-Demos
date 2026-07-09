@@ -1,26 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 
-/* ===== The Luxe — client mockup, scoped under .luxe ===== */
+/* ===== The Luxe — client mockup, scoped under .luxe =====
+   Dark-luxury canvas with warm-cream surfaces and gilded accents:
+   the studio's own contrast (dark wood + leather frame, cream walls,
+   antique-brass sconces). Cormorant display / Inter body / JetBrains Mono labels. */
 .luxe {
-  --l-bg: #0b0a08;
-  --l-bg-2: #13110d;
-  --l-panel: #17140f;
-  --l-line: rgba(201, 164, 76, 0.22);
-  --l-gold: #c9a44c;
-  --l-gold-soft: #e0c074;
-  --l-cream: #f4efe4;
-  --l-muted: #b3aa98;
+  --l-bg: #151210;
+  --l-bg-2: #100e0c;
+  --l-surface: #f0ece1;
+  --l-gold: #d9b87a;
+  --l-gold-2: #cba358;
+  --l-text: #ede7db;
+  --l-text-strong: #ffffff;
+  --l-text-2: #a1a1aa;
+  --l-card-ink: #1c1712;
+  --l-card-muted: #6b6154;
+  --l-line: rgba(240, 236, 225, 0.14);
+  --l-line-2: rgba(21, 18, 16, 0.12);
+  --radius: 8px;
+  --l-shadow: 0 32px 60px -32px rgba(0, 0, 0, 0.7);
+  --l-shadow-sm: 0 16px 34px -24px rgba(0, 0, 0, 0.65);
+  --l-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   position: relative;
   z-index: 1;
   min-height: 100vh;
   width: 100%;
   background:
-    radial-gradient(circle at 78% -5%, rgba(201, 164, 76, 0.14), transparent 42%),
-    radial-gradient(circle at 8% 12%, rgba(201, 164, 76, 0.06), transparent 34%),
+    radial-gradient(circle at 78% -5%, rgba(217, 184, 122, 0.12), transparent 42%),
+    radial-gradient(circle at 8% 12%, rgba(203, 163, 88, 0.07), transparent 34%),
     linear-gradient(180deg, var(--l-bg) 0%, var(--l-bg-2) 100%);
-  color: var(--l-cream);
-  font-family: "Jost", sans-serif;
+  color: var(--l-text);
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   line-height: 1.65;
   overflow-x: hidden;
@@ -45,8 +56,9 @@
 }
 
 .luxe .eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.42em;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--l-gold);
   font-weight: 500;
@@ -58,30 +70,34 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.9rem 1.6rem;
-  border-radius: 2px;
-  font-size: 0.82rem;
-  letter-spacing: 0.16em;
+  border-radius: var(--radius);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 500;
-  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  transition: transform 0.25s var(--l-ease), background 0.25s ease, color 0.25s ease,
+    box-shadow 0.25s ease, border-color 0.25s ease;
   cursor: pointer;
   border: 1px solid var(--l-gold);
 }
 .luxe .btn-gold {
-  background: linear-gradient(135deg, var(--l-gold-soft), var(--l-gold));
-  color: #1a1509;
+  background: linear-gradient(135deg, var(--l-gold), var(--l-gold-2));
+  color: #1a140b;
+  box-shadow: var(--l-shadow-sm);
 }
 .luxe .btn-gold:hover {
   transform: translateY(-2px);
+  box-shadow: 0 18px 34px -18px rgba(217, 184, 122, 0.5);
 }
 .luxe .btn-ghost {
   background: transparent;
-  color: var(--l-cream);
+  color: var(--l-text);
   border-color: var(--l-line);
 }
 .luxe .btn-ghost:hover {
   border-color: var(--l-gold);
-  color: var(--l-gold-soft);
+  color: var(--l-gold);
 }
 
 /* ---------- nav ---------- */
@@ -89,8 +105,8 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(10px);
-  background: rgba(11, 10, 8, 0.72);
+  backdrop-filter: blur(12px);
+  background: rgba(21, 18, 16, 0.72);
   border-bottom: 1px solid var(--l-line);
 }
 .luxe .nav-inner {
@@ -104,7 +120,7 @@
   font-size: 1.5rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--l-cream);
+  color: var(--l-text-strong);
 }
 .luxe .brand span {
   color: var(--l-gold);
@@ -115,12 +131,13 @@
   gap: 1.25rem;
 }
 .luxe .nav-phone {
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  color: var(--l-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--l-text-2);
 }
 .luxe .nav-phone:hover {
-  color: var(--l-gold-soft);
+  color: var(--l-gold);
 }
 
 /* ---------- hero ---------- */
@@ -128,6 +145,26 @@
   position: relative;
   padding: clamp(4.5rem, 12vw, 9rem) 0 clamp(3.5rem, 8vw, 6rem);
   text-align: center;
+}
+.luxe .hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/luxe/studio.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+}
+.luxe .hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(21, 18, 16, 0.68) 0%,
+    rgba(21, 18, 16, 0.84) 55%,
+    var(--l-bg) 100%
+  );
 }
 .luxe .hero .monogram {
   position: absolute;
@@ -138,10 +175,20 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(20rem, 46vw, 42rem);
   line-height: 1;
-  color: rgba(201, 164, 76, 0.045);
+  color: rgba(217, 184, 122, 0.05);
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  animation: luxeFloat 15s ease-in-out infinite;
+}
+@keyframes luxeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
 }
 .luxe .hero > .wrap {
   position: relative;
@@ -159,16 +206,16 @@
   line-height: 1.02;
   letter-spacing: 0.01em;
   margin: 1.4rem 0 0;
-  color: var(--l-cream);
+  color: #faf6ee;
 }
 .luxe .hero h1 em {
   font-style: italic;
-  color: var(--l-gold-soft);
+  color: var(--l-gold);
 }
 .luxe .hero .sub {
   max-width: 30rem;
   margin: 1.5rem auto 0;
-  color: var(--l-muted);
+  color: var(--l-text-2);
   font-weight: 300;
   font-size: 1.05rem;
 }
@@ -187,13 +234,14 @@
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--l-line);
-  color: var(--l-muted);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
+  color: var(--l-text-2);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .luxe .hero-badges b {
-  color: var(--l-cream);
+  color: var(--l-text-strong);
   font-weight: 500;
 }
 
@@ -210,102 +258,172 @@
   font-weight: 500;
   font-size: clamp(2.1rem, 5vw, 3.2rem);
   margin: 0.9rem 0 0;
-  color: var(--l-cream);
+  color: var(--l-text-strong);
 }
 .luxe .section-head p {
-  color: var(--l-muted);
+  color: var(--l-text-2);
   font-weight: 300;
   max-width: 34rem;
   margin: 0.8rem auto 0;
 }
 
-/* ---------- services ---------- */
+/* ---------- services (cream bento cards) ---------- */
 .luxe .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 .luxe .card {
-  border: 1px solid var(--l-line);
-  background: linear-gradient(180deg, var(--l-panel), rgba(19, 17, 13, 0.4));
-  padding: 2rem 1.5rem;
-  border-radius: 3px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 232px;
+  background: var(--l-surface);
+  color: var(--l-card-ink);
+  border: 1px solid var(--l-line-2);
+  border-radius: var(--radius);
+  padding: 1.9rem 1.6rem;
+  transition: transform 0.4s var(--l-ease), box-shadow 0.4s var(--l-ease);
 }
 .luxe .card:hover {
-  transform: translateY(-4px);
-  border-color: var(--l-gold);
+  transform: translateY(-6px);
+  box-shadow: var(--l-shadow);
 }
-.luxe .card .num {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  color: var(--l-gold);
-  font-size: 1.3rem;
+.luxe .card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
 }
 .luxe .card h3 {
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-  font-size: 1.5rem;
-  margin: 0.5rem 0 0.6rem;
-  color: var(--l-cream);
+  font-size: 1.65rem;
+  margin: 0;
+  color: var(--l-card-ink);
+}
+.luxe .card .arrow {
+  font-size: 1.05rem;
+  color: var(--l-card-muted);
+  transition: transform 0.4s var(--l-ease), color 0.4s ease;
+}
+.luxe .card:hover .arrow {
+  transform: translate(3px, -3px);
+  color: var(--l-gold-2);
 }
 .luxe .card p {
-  color: var(--l-muted);
+  color: var(--l-card-muted);
   font-size: 0.92rem;
-  font-weight: 300;
+  font-weight: 400;
+  margin: auto 0 0;
+  padding-top: 1.5rem;
+}
+
+/* ---------- gallery ---------- */
+.luxe .gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.luxe .shot {
+  position: relative;
   margin: 0;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--l-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--l-shadow-sm);
+  transition: transform 0.4s var(--l-ease), box-shadow 0.4s var(--l-ease),
+    border-color 0.4s ease;
+}
+.luxe .shot:hover {
+  transform: translateY(-6px);
+  border-color: var(--l-gold);
+  box-shadow: var(--l-shadow);
+}
+.luxe .shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--l-ease);
+}
+.luxe .shot:hover img {
+  transform: scale(1.07);
+}
+.luxe .shot figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.9rem 0.9rem 0.9rem;
+  background: linear-gradient(transparent, rgba(16, 13, 11, 0.9));
+  color: var(--l-gold);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 /* ---------- stylists ---------- */
 .luxe .stylists {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 .luxe .stylist {
   display: flex;
-  gap: 1.4rem;
+  flex-direction: column;
   align-items: center;
-  border: 1px solid var(--l-line);
-  border-radius: 3px;
-  padding: 1.75rem;
-  background: linear-gradient(120deg, var(--l-panel), transparent);
+  text-align: center;
+  gap: 1.1rem;
+  border: 1px solid var(--l-line-2);
+  border-radius: var(--radius);
+  padding: 2.25rem 1.5rem;
+  background: var(--l-surface);
+  color: var(--l-card-ink);
+  transition: transform 0.4s var(--l-ease), box-shadow 0.4s var(--l-ease);
+}
+.luxe .stylist:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--l-shadow);
 }
 .luxe .avatar {
   flex: none;
-  width: 74px;
-  height: 74px;
+  width: 78px;
+  height: 78px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.9rem;
-  color: #1a1509;
-  background: linear-gradient(135deg, var(--l-gold-soft), var(--l-gold));
+  font-size: 2rem;
+  color: #1a140b;
+  background: linear-gradient(135deg, var(--l-gold), var(--l-gold-2));
 }
 .luxe .stylist h4 {
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   font-weight: 600;
-  margin: 0;
-  color: var(--l-cream);
+  margin: 0.35rem 0 0;
+  color: var(--l-card-ink);
 }
 .luxe .stylist span {
-  color: var(--l-gold);
-  font-size: 0.75rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--l-gold-2);
+  font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .luxe .stylist p {
-  color: var(--l-muted);
-  font-size: 0.9rem;
-  font-weight: 300;
-  margin: 0.35rem 0 0;
+  color: var(--l-card-muted);
+  font-size: 0.92rem;
+  font-weight: 400;
+  margin: 0.5rem 0 0;
 }
 
 /* ---------- reviews ---------- */
 .luxe .reviews {
-  background: linear-gradient(180deg, transparent, rgba(201, 164, 76, 0.04), transparent);
+  background: linear-gradient(180deg, transparent, rgba(217, 184, 122, 0.05), transparent);
 }
 .luxe .quotes {
   display: grid;
@@ -313,29 +431,37 @@
   gap: 1rem;
 }
 .luxe .quote {
-  border: 1px solid var(--l-line);
-  border-radius: 3px;
-  padding: 2rem 1.6rem;
-  background: rgba(19, 17, 13, 0.5);
+  border: 1px solid var(--l-line-2);
+  border-radius: var(--radius);
+  padding: 2rem 1.7rem;
+  background: var(--l-surface);
+  color: var(--l-card-ink);
+  box-shadow: var(--l-shadow-sm);
+  transition: transform 0.4s var(--l-ease), box-shadow 0.4s var(--l-ease);
+}
+.luxe .quote:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--l-shadow);
 }
 .luxe .quote .qs {
-  color: var(--l-gold);
+  color: var(--l-gold-2);
   letter-spacing: 0.2em;
 }
 .luxe .quote p {
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   line-height: 1.5;
   margin: 0.9rem 0 1.2rem;
-  color: var(--l-cream);
+  color: var(--l-card-ink);
 }
 .luxe .quote cite {
+  font-family: "JetBrains Mono", monospace;
   font-style: normal;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--l-muted);
+  color: var(--l-card-muted);
 }
 
 /* ---------- visit ---------- */
@@ -344,6 +470,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
   align-items: center;
+}
+.luxe .visit h2 {
+  color: var(--l-text-strong);
 }
 .luxe .visit .rows {
   margin-top: 1.75rem;
@@ -355,20 +484,23 @@
   padding: 0.85rem 0;
   border-bottom: 1px solid var(--l-line);
   font-size: 0.95rem;
+  color: var(--l-text);
 }
 .luxe .visit .row span:first-child {
-  color: var(--l-muted);
-  letter-spacing: 0.1em;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--l-text-2);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   align-self: center;
 }
 .luxe .map {
   border: 1px solid var(--l-line);
-  border-radius: 3px;
+  border-radius: var(--radius);
   overflow: hidden;
   min-height: 320px;
-  filter: grayscale(0.3) contrast(1.05) brightness(0.85);
+  box-shadow: var(--l-shadow-sm);
+  filter: grayscale(0.25) contrast(1.03) brightness(0.92);
 }
 .luxe .map iframe {
   width: 100%;
@@ -383,25 +515,37 @@
   text-align: center;
 }
 .luxe .final .box {
-  border: 1px solid var(--l-line);
-  border-radius: 4px;
+  border: 1px solid var(--l-line-2);
+  border-radius: var(--radius);
   padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
   background:
-    radial-gradient(circle at 50% 0%, rgba(201, 164, 76, 0.12), transparent 60%),
-    var(--l-panel);
+    radial-gradient(circle at 50% 0%, rgba(217, 184, 122, 0.16), transparent 60%),
+    var(--l-surface);
+  color: var(--l-card-ink);
+  box-shadow: var(--l-shadow);
+}
+.luxe .final .eyebrow {
+  color: var(--l-gold-2);
 }
 .luxe .final h2 {
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
   font-size: clamp(2.2rem, 6vw, 3.6rem);
-  margin: 0 0 0.6rem;
-  color: var(--l-cream);
+  margin: 0.6rem 0;
+  color: var(--l-card-ink);
 }
 .luxe .final p {
-  color: var(--l-muted);
-  font-weight: 300;
+  color: var(--l-card-muted);
+  font-weight: 400;
   margin: 0 auto 2rem;
   max-width: 28rem;
+}
+
+/* star icon on the "5.0 on Google" eyebrow */
+.luxe .star-ico {
+  color: var(--l-gold);
+  font-size: 0.9em;
+  letter-spacing: 0;
 }
 
 /* ---------- footer ---------- */
@@ -409,40 +553,95 @@
   border-top: 1px solid var(--l-line);
   padding: 2.5rem 0;
   text-align: center;
-  color: var(--l-muted);
+  color: var(--l-text-2);
   font-size: 0.82rem;
   font-weight: 300;
 }
+.luxe .foot .full-name {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--l-text);
+}
 .luxe .foot .concept {
   margin-top: 0.75rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(179, 170, 152, 0.6);
+  color: rgba(161, 161, 170, 0.75);
 }
 .luxe .foot .concept b {
   color: var(--l-gold);
   font-weight: 500;
 }
 
-/* ---------- reveal ---------- */
-.luxe [data-reveal] {
+/* ---------- motion: scroll-triggered reveals ----------
+   Only applied once JS adds `.reveal-armed` (progressive enhancement):
+   with no JS the page renders fully visible. */
+.luxe.reveal-armed [data-reveal] {
   opacity: 0;
-  transform: translateY(18px);
-  animation: luxeReveal 0.8s ease forwards;
+  transform: translateY(26px);
+  transition: opacity 0.9s var(--l-ease), transform 0.9s var(--l-ease);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
 }
-@keyframes luxeReveal {
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.luxe.reveal-armed [data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+/* masked reveal — content wipes in from the top edge */
+.luxe.reveal-armed [data-reveal="mask"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1s var(--l-ease);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.luxe.reveal-armed [data-reveal="mask"].in {
+  clip-path: inset(0 0 0 0);
+}
+/* staggered entrance within grids */
+.luxe .cards > [data-reveal]:nth-child(2) {
+  --reveal-delay: 0.08s;
+}
+.luxe .cards > [data-reveal]:nth-child(3) {
+  --reveal-delay: 0.16s;
+}
+.luxe .cards > [data-reveal]:nth-child(4) {
+  --reveal-delay: 0.24s;
+}
+.luxe .gallery > [data-reveal]:nth-child(2) {
+  --reveal-delay: 0.1s;
+}
+.luxe .gallery > [data-reveal]:nth-child(3) {
+  --reveal-delay: 0.2s;
+}
+.luxe .gallery > [data-reveal]:nth-child(4) {
+  --reveal-delay: 0.3s;
+}
+.luxe .stylists > [data-reveal]:nth-child(2) {
+  --reveal-delay: 0.1s;
+}
+.luxe .stylists > [data-reveal]:nth-child(3) {
+  --reveal-delay: 0.2s;
+}
+.luxe .quotes > [data-reveal]:nth-child(2) {
+  --reveal-delay: 0.1s;
+}
+.luxe .quotes > [data-reveal]:nth-child(3) {
+  --reveal-delay: 0.2s;
 }
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
-  .luxe .cards {
+  .luxe .cards,
+  .luxe .gallery {
     grid-template-columns: repeat(2, 1fr);
   }
+  .luxe .stylists,
   .luxe .quotes {
     grid-template-columns: 1fr;
   }
@@ -451,8 +650,7 @@
   }
 }
 @media (max-width: 560px) {
-  .luxe .cards,
-  .luxe .stylists {
+  .luxe .cards {
     grid-template-columns: 1fr;
   }
   .luxe .nav-phone {
@@ -461,5 +659,19 @@
   .luxe .hero-actions .btn {
     flex: 1 1 auto;
     justify-content: center;
+  }
+}
+
+/* ---------- accessibility: honor reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .luxe [data-reveal],
+  .luxe [data-reveal="mask"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  .luxe .hero .monogram {
+    animation: none;
   }
 }

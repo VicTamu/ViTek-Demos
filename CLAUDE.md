@@ -56,7 +56,7 @@ Business context and outreach scripts live in the Portfolio project's memory
 
 | Slug | Business | Location | Status |
 |------|----------|----------|--------|
-| `luxe` | The Luxe Beauty & Esthetic Room | Round Rock | **Built.** Spoke to an employee who'll pass it to the owner (no owner name/contact yet). Before sending: swap `BOOKSY_URL` for real Booksy page; add real photos. |
+| `luxe` | The Luxe Beauty & Esthetic Room | Round Rock | **Ready to send.** Real Booksy URL + real studio/work photos wired in; warm dark-luxury design w/ scroll-reveal motion. Spoke to an employee who'll pass it to the owner (no owner name/contact yet). |
 | — | Courtyard Salon Suites | Round Rock (2000 S I-35 #F1) | Not built. Walk-in target. Hook: suites directory — a profile + booking link per stylist. |
 | — | Hair Chic'ness (inside Courtyard) | Round Rock (2000 S I-35 #F1) | Not built. Walk-in target. Hook: own the "healthy hair specialist" niche. |
 | — | J Park Beauty Salon | Round Rock | Voicemail + text left. Hook: get found by new clients (5.0 but invisible). |
