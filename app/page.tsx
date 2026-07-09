@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+/**
+ * Root route. Public by URL but guarded: a trimmed link (…/luxe → …/) must not
+ * expose the prospect pipeline. By default this renders a neutral ViTek splash.
+ * The private index only appears when `?k=<HUB_KEY>` matches the HUB_KEY env var
+ * (set in .env.local locally / Vercel project env). No key set ⇒ always splash.
+ */
 
 // Private internal hub listing every client concept. Not indexed (see layout).
 const demos = [
@@ -10,7 +18,81 @@ const demos = [
   },
 ];
 
-export default function DemosIndex() {
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+function isUnlocked(params: Record<string, string | string[] | undefined>) {
+  const key = process.env.HUB_KEY;
+  return Boolean(key) && params.k === key;
+}
+
+// Neutral tab title on the splash so a trimmed link reveals nothing.
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  return {
+    title: isUnlocked(params)
+      ? "ViTek Systems — Client Concepts"
+      : "ViTek Systems — Web Design Studio",
+  };
+}
+
+export default async function Home({ searchParams }: { searchParams: SearchParams }) {
+  const params = await searchParams;
+  return isUnlocked(params) ? <Hub /> : <Splash />;
+}
+
+function Splash() {
+  return (
+    <main
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: "24px",
+        fontFamily: "system-ui, sans-serif",
+      }}
+    >
+      <p
+        style={{
+          letterSpacing: "0.34em",
+          textTransform: "uppercase",
+          fontSize: 12,
+          color: "#8a8a8a",
+          margin: 0,
+        }}
+      >
+        ViTek Systems
+      </p>
+      <h1 style={{ fontSize: 30, fontWeight: 600, margin: "14px 0 10px" }}>
+        Web design for local business.
+      </h1>
+      <p style={{ color: "#9a9a9a", maxWidth: 440, margin: "0 0 22px", lineHeight: 1.6 }}>
+        Custom sites for shops, salons, and studios across the Austin &amp; Round
+        Rock area.
+      </p>
+      <a
+        href="mailto:vitecollabs@gmail.com"
+        style={{
+          fontSize: 14,
+          color: "#f5f5f5",
+          border: "1px solid #2a2a2a",
+          borderRadius: 8,
+          padding: "10px 18px",
+        }}
+      >
+        vitecollabs@gmail.com
+      </a>
+    </main>
+  );
+}
+
+function Hub() {
   return (
     <main
       style={{
